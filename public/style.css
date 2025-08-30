@@ -1,0 +1,39 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.dashboard > div {
+  width: 300px;
+  padding: 20px;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 1.6;
+  border: 2px solid #999;
+  background-color: #ddd;
+  color: #000;
+}
+
+.up {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+.down {
+  background-color: #F44336;
+  color: #fff;
+}
