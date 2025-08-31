@@ -51,8 +51,47 @@ function timeSince(date) {
 }
 
 // 🔍 Replace these with actual service URLs
-checkService("GitHub API", "https://api.github.com", "githubBox");
-checkService("Artifactory", "http://placeholder-artifactory.local", "artifactoryBox");
-checkService("SonarQube", "http://placeholder-sonarqube.local", "sonarqubeBox");
-checkService("Azure DevOps", "http://placeholder-azure.local", "azureBox");
-checkService("Zabbix", "http://placeholder-zabbix.local", "zabbixBox");
+
+// --- Auto-refresh and timer logic ---
+const REFRESH_INTERVAL = 60; // seconds
+let lastRefresh = new Date();
+let nextRefresh = REFRESH_INTERVAL;
+
+// Create timer display
+const timerDiv = document.createElement('div');
+timerDiv.style.marginBottom = "20px";
+timerDiv.style.fontWeight = "bold";
+document.body.insertBefore(timerDiv, document.querySelector('.dashboard'));
+
+function refreshAllServices() {
+  checkService("GitHub API", "https://api.github.com", "githubBox");
+  checkService("Artifactory", "http://placeholder-artifactory.local", "artifactoryBox");
+  checkService("SonarQube", "http://placeholder-sonarqube.local", "sonarqubeBox");
+  checkService("Azure DevOps", "http://placeholder-azure.local", "azureBox");
+  checkService("Zabbix", "http://placeholder-zabbix.local", "zabbixBox");
+  lastRefresh = new Date();
+  nextRefresh = REFRESH_INTERVAL;
+  updateTimer();
+}
+
+function updateTimer() {
+  const now = new Date();
+  const secondsSinceRefresh = Math.floor((now - lastRefresh) / 1000);
+  timerDiv.textContent = `⏳ Last refresh: ${lastRefresh.toLocaleTimeString()} | Next refresh in: ${nextRefresh} second${nextRefresh !== 1 ? "s" : ""}`;
+}
+
+// Initial load
+refreshAllServices();
+updateTimer();
+
+// Auto-refresh every 1 minute
+setInterval(() => {
+  refreshAllServices();
+}, REFRESH_INTERVAL * 1000);
+
+// Update timer every second
+setInterval(() => {
+  nextRefresh--;
+  if (nextRefresh < 0) nextRefresh = 0;
+  updateTimer();
+}, 1000);
