@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Service Details - Availability Monitor</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="service-detail.css" />
+</head>
+<body>
+    <div class="main-content">
+        <nav class="navigation">
+            <a href="/" class="back-link">← Back to Dashboard</a>
+        </nav>
+        
+        <div class="service-header">
+            <h1 id="serviceName">Service Name</h1>
+            <div id="currentStatus" class="status-badge">Status</div>
+        </div>
+
+        <div class="detail-grid">
+            <!-- Quick Stats -->
+            <div class="detail-card">
+                <h3>Quick Stats</h3>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Uptime (24h)</span>
+                        <span id="uptime24h" class="stat-value">99.9%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Avg Response</span>
+                        <span id="avgResponse" class="stat-value">245ms</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Last Down</span>
+                        <span id="lastDowntime" class="stat-value">2h ago</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Status Code</span>
+                        <span id="statusCode" class="stat-value">200</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Response Time Chart -->
+            <div class="detail-card">
+                <h3>Response Time History</h3>
+                <div id="responseTimeChart" class="chart-container">
+                    <!-- Chart will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Uptime Calendar -->
+            <div class="detail-card">
+                <h3>Uptime Calendar</h3>
+                <div id="uptimeCalendar" class="calendar-container">
+                    <!-- Calendar will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Recent Events -->
+            <div class="detail-card">
+                <h3>Recent Events</h3>
+                <div id="recentEvents" class="events-list">
+                    <!-- Events will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="margin-top:40px; text-align:center; color:#555; font-size:1em;">
+        <hr style="margin-bottom:15px;">
+        <div>This page is created and maintained by the DevOps team - Jakub Klíma.</div>
+    </footer>
+
+    <script src="service-detail.js"></script>
+</body>
+</html>
